@@ -24,14 +24,14 @@ class StoreTrainersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'max:255'],
-            'company' => ['string', 'max:512'],
-            'location' => ['string', 'max:512'],
-            'courses' => ['string', 'max:512'],
-            'email' => ['email', 'max:255', Rule::unique(Trainers::class)],
-            'mobile' => ['string', 'max:512'],
-            'qualifications' => ['string', 'max:512'],
-            'photo' => ['string', 'max:512']
+            'name' => ['string', 'max:255', 'required'],
+            'company' => ['string', 'max:512', 'required'],
+            'location' => ['string', 'max:512', 'required'],
+            'courses' => ['string', 'max:512', 'required'],
+            'email' => ['email', 'max:255', Rule::unique(Trainers::class), 'required'],
+            'mobile' => ['string', 'max:512', 'nullable'],
+            'qualifications' => ['string', 'max:512', 'nullable'],
+            'photo' => ['string', 'max:512', 'nullable']
             
         ];
     }

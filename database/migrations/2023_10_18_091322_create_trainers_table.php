@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('company');
             $table->string('email')->unique();
-            $table->string('mobile');
+            $table->string('mobile')->nullable();
             $table->string('location');
-            $table->string('qualifications');
+            $table->string('qualifications')->nullable();
             $table->string('courses');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
