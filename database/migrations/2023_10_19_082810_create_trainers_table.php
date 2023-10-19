@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('company');
-            $table->string('email')->unique();
-            $table->string('mobile')->nullable();
-            $table->string('location');
-            $table->string('qualifications')->nullable();
+            $table->string('title');
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('providerName');
+            $table->string('email');
+            $table->string('verifyEmail');
+            $table->string('phone');
+            $table->enum('format', ['onsite', 'vt_zoom']);
             $table->string('courses');
+            $table->string('region');
+            $table->text('bio');
+            $table->boolean('approved')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });
