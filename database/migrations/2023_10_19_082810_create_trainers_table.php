@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('verifyEmail');
             $table->string('phone');
             $table->enum('format', ['onsite', 'vt_zoom']);
-            $table->string('courses');
+            $table->json('courses');
             $table->string('region');
             $table->text('bio');
             $table->boolean('approved')->nullable();

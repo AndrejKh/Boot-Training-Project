@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrainersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TrainersController::class, 'index'])->name('home');
+Route::get('trainers/{id}/{key}', [TrainersController::class, 'show'])->name("viewtrainer");
+Route::get('courses/{id}', [CoursesController::class, 'show'])->name("viewcourse");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

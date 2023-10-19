@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('enquires', function (Blueprint $table) {
             $table->id();
+            
             $table->string('title');
             $table->string('firstName');
             $table->string('lastName');
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('verifyEmail');
             $table->string('phone');
             $table->text('message');
+            $table->foreignId('trainer_id')->constrained('trainers')->onDelete('cascade');
             $table->timestamps();
         });
     }
