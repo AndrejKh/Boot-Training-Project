@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TrainersController;
+use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EnquiryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +18,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TrainersController::class, 'index'])->name('home');
-Route::get('trainers/{id}/{key}', [TrainersController::class, 'show'])->name("viewtrainer");
-Route::get('courses/{id}', [CoursesController::class, 'show'])->name("viewcourse");
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home-trainers', [HomeController::class, 'indexforTrainers'])->name('home-trainers');
+Route::get('trainers', [TrainerController::class, 'index'])->name('trainers');
+Route::get('trainers/{id}', [TrainerController::class, 'show'])->name("viewtrainer");
+Route::put('trainers/{id}', [TrainerController::class, 'update'])->middleware(['auth', 'verified'])->name("approvetrainer");
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('courses', [CourseController::class, 'index'])->middleware(['auth', 'verified'])->name("courses");
+Route::get('courses/create', [CourseController::class, 'create'])->middleware(['auth', 'verified'])->name("createcourse");
+Route::post('courses/store', [CourseController::class, 'store'])->middleware(['auth', 'verified'])->name("createstore");
+Route::put('courses/{id}', [CourseController::class, 'update'])->middleware(['auth', 'verified'])->name("approvecourse");
+Route::get('courses/{id}', [CourseController::class, 'show'])->name("viewcourse");
+
+Route::get('enquires', [EnquiryController::class, 'index'])->middleware(['auth', 'verified'])->name("enquires");
+Route::post('enquires/store', [EnquiryController::class, 'store'])->name("send-enquiry");
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/backsoon', function () {
+    return view('backsoon');
+})->name('backsoon');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -18,9 +18,14 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="name" :value="__('First & Last Name')" />
+            <div class="flex flex-row">
+                <x-text-input id="firstName" name="firstName" type="text" class="mt-1 block w-full mr-1" :value="old('firstName', $user->firstName)" required autofocus autocomplete="firstName" />
+                <x-input-error class="mt-2" :messages="$errors->get('firstName')" />
+        
+                <x-text-input id="lastName" name="lastName" type="text" class="mt-1 block w-full ml-2" :value="old('lastName', $user->lastName)" required autocomplete="lastName" />
+                <x-input-error class="mt-2" :messages="$errors->get('lastName')" />
+            </div>
         </div>
 
         <div>
@@ -46,6 +51,12 @@
                 </div>
             @endif
         </div>
+        <div>
+        @if (!$user->type)
+
+        
+
+        @endif
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

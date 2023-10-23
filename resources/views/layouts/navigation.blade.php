@@ -20,12 +20,19 @@
             @auth
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <a href="{{ route('register') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white">{{ __('Register as Trainer') }}</a>
+                @if(Auth::user()->type)
+                <a href="{{ route('trainers') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Trainers') }}</a>
+                <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Courses') }}</a>
+                <a href="{{ route('enquires') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Enquires') }}</a>
 
+                @else
+                <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('My Courses') }}</a>
+                <a href="{{ route('enquires') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('My Enquires') }}</a>
+                @endif
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="ml-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->firstName }}</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -55,7 +62,8 @@
             </div>
             @else
                 <div class="sm:flex sm:items-center sm:ml-6">
-                    <a href="{{ route('register') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Register as Trainer') }}</a>
+                    <a href="{{ route('register-trainer') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Register as Trainer') }}</a>
+                    <a href="{{ route('register') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4">{{ __('Register as Admin') }}</a>
                     <a href="{{ route('login') }}" class="ml-4 font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Log in') }}</a>
                 </div>
             @endauth

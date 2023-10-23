@@ -18,11 +18,15 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
-            $table->string('verifyEmail');
+            $table->string('organName');
             $table->string('phone');
             $table->text('message');
-            $table->foreignId('trainer_id')->constrained('trainers')->onDelete('cascade');
+            $table->foreignId('trainer_id')->nullable();
+            $table->foreignId('course_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('trainer_id')->references('id')->on('users');
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

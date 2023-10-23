@@ -14,7 +14,7 @@
                         <p>North West England, Yourkshire & The Humber Scotland</p>
                     </div>
                     <div class="flex ">
-                        <p class="font-bold mr-2">Fromat: </p>
+                        <p class="font-bold mr-2">Format: </p>
                         <p>On Site</p>
                     </div>
                     <div class="flex ">
