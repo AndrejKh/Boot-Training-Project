@@ -19,16 +19,16 @@
                             @endif
                             @endauth
                             <a
-                                href="enquires"
+                                href="courses"
                                 class="text-body-color py-2 px-4 font-medium md:text-base lg:px-6"
                             >
-                                {{ __('enquires List') }}
+                                {{ __('Courses List') }}
                             </a>
                             <a  
-                                href="enquires"
+                                href="enquiries"
                                 class="bg-gray-100 rounded-tr rounded-tl text-zinc-500 border-b-4 border-b-gray-800 text-body-color py-2 px-4 font-medium md:text-base lg:px-6"
                             >
-                                {{ __('Enquires') }}
+                                {{ __('Enquiries') }}
                             </a>
                         </div>
                         <div>
@@ -53,12 +53,11 @@
                                             <tr class="h-2"></tr>
                                         </thead>
                                         <tbody>
-                                        @if($enquires && (count($enquires) > 0))
-                                            
+                                        @if($enquiries && (count($enquiries) > 0))
                                             @php    
                                                 $i = 0;
                                             @endphp
-                                            @foreach ($enquires as $enquiry)
+                                            @foreach ($enquiries as $enquiry)
                                             @if($i%2 == 0)
                                             <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
                                                 <td class="">
@@ -79,7 +78,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="pl-4">
-                                                    <a href="enquires/{{$enquiry->id}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</a>
+                                                    <a href="enquiries/{{$enquiry->id}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</a>
                                                 </td>
                                             </tr>
                                             <tr class="h-3"></tr>                
@@ -104,7 +103,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="pl-4">
-                                                    <a href="enquires/{{$enquiry->id}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</a>
+                                                    <a href="enquiries/{{$enquiry->id}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</a>
                                                 </td>
                                             </tr>
                                             <tr class="h-3"></tr>

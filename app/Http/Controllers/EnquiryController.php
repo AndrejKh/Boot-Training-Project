@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Enquires;
+use App\Models\Enquiries;
 use Illuminate\Support\Facades\Auth;
 
 class EnquiryController extends Controller
@@ -20,15 +20,15 @@ class EnquiryController extends Controller
             $trainer_id = Auth::user()->id;
             $isAdmin = Auth::user()->type;
         }
-        $enquires;
+        $enquiries;
         
         if($isAdmin){
-            $enquires = Enquires::with('course', 'trainer')->get();
+            $enquiries = Enquiries::with('course', 'trainer')->get();
         }else{
-            $enquires = Enquires::with('course', 'trainer')->where('trainer_id', $trainer_id)->get();
+            $enquiries = Enquiries::with('course', 'trainer')->where('trainer_id', $trainer_id)->get();
         }
         
-        return view('enquireslist', ['enquires' => $enquires]);
+        return view('enquirieslist', ['enquiries' => $enquiries]);
     }
 
     /**
@@ -55,7 +55,7 @@ class EnquiryController extends Controller
         ]);
         
         if($request->trainer_id){
-            Enquires::create([
+            Enquiries::create([
                 'trainer_id' => $request->trainer_id,
                 'title' => $request->title,
                 'firstName' => $request->firstName,
@@ -65,8 +65,11 @@ class EnquiryController extends Controller
                 'phone' => $request->phone,
                 'message' => $request->message,
             ]);
+            
+            return view('backsoon', ['provider' => $request->provider]);
+
         }else if($request->course_id){
-            Enquires::create([
+            Enquiries::create([
                 'course_id' => $request->course_id,
                 'title' => $request->title,
                 'firstName' => $request->firstName,
@@ -76,10 +79,13 @@ class EnquiryController extends Controller
                 'phone' => $request->phone,
                 'message' => $request->message,
             ]);
+
+            return view('backsoon', ['provider' => $request->provider]);
+            
         }else{
-            echo "Something went wrong.";
+            abort(404);
         }
-        return redirect('backsoon');
+        
     }
 
     /**

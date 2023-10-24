@@ -51,9 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Courses::class, 'trainer_id');
     }
-    public function enquires()
+    public function enquiries()
     {
-        return $this->hasMany(Enquires::class, 'trainer_id');
+        return $this->hasMany(Enquiries::class, 'trainer_id');
     }
 
     public function trainer()

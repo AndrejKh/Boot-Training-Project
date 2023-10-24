@@ -11,10 +11,10 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="text-white hover:text-gray-300 uppercase">
+                <div class="hidden  flex items-center space-x-8 sm:-my-px sm:ml-5 sm:flex text-2xl">
+                    <a href="/" class="text-white hover:text-gray-300 uppercase font-semibold ">
                         {{ __('Book Training') }}
-                    </x-nav-link>
+                    </a>
                 </div>
             </div>
             @auth
@@ -23,11 +23,11 @@
                 @if(Auth::user()->type)
                 <a href="{{ route('trainers') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Trainers') }}</a>
                 <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Courses') }}</a>
-                <a href="{{ route('enquires') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Enquires') }}</a>
+                <a href="{{ route('enquiries') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Enquiries') }}</a>
 
                 @else
                 <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('My Courses') }}</a>
-                <a href="{{ route('enquires') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('My Enquires') }}</a>
+                <a href="{{ route('enquiries') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('My Enquiries') }}</a>
                 @endif
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">

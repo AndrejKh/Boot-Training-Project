@@ -28,38 +28,30 @@
                             </a>
                         </div>
                         <div>
-                            <div
-                                class="text-body-color p-6 text-base leading-relaxed flex justify-center"
-                            >
+                            <form action="/search" method="GET" class="text-body-color p-6 text-base leading-relaxed flex justify-center">
+                                @csrf
+                                <input type="hidden" name="cat" value="course">
                                 <label class="block  flex items-end">
                                     <select name="region" id="region" class="block w-full mt-1">
-                                        <option value="">Select region</option>
-                                        <option value="London-England">London-England</option>
-                                        <option value="East Midlands-England">East Midlands-England</option>
-                                        <option value="West Midlands-England">West Midlands-England</option>
-                                        <option value="North East-England">North East-England</option>
-                                        <option value="North West-England">North West-England</option>
-                                        <option value="South West-England">South West-England</option>
-                                        <option value="South Eest-England">South Eest-England</option>
-                                        <option value="Yorkshire & The Humber-England">Yorkshire & The Humber-England</option>
-                                        <option value="Scotland">Scotland</option>
-                                        <option value="Wales">Wales</option>
-                                        <option value="Northern Ireland">Northern Ireland</option>
+                                        <option value="" {{isset($query) && ($query[0] == '') ? 'selected': '' }}>Select region</option>
+                                        @foreach($sharedRegions as $region)
+                                        <option value="{{$region}}" {{isset($query) && ($query[0] == $region) ? 'selected': '' }}>{{$region}}</option>
+                                        @endforeach
                                     </select>
                                 </label>
                                 <label class="block ml-4">
                                     <span class="text-gray-700">Search for Course</span>
                                     <select name="course" id="course" class="block w-full mt-1">
-                                        <option value="">Select course</option>
+                                        <option value="" {{isset($query) && ($query[1] == '') ? 'selected': '' }}>Select course</option>
                                         @foreach($courseslist as $list)
-                                        <option value="{{$list}}">{{$list}}</option>
+                                        <option value="{{$list}}" {{isset($query) && ($query[1] == $list) ? 'selected': '' }}>{{$list}}</option>
                                         @endforeach
                                     </select>
                                 </label>
                                 <label class="block flex items-end ml-4">
-                                    <button class="text-white px-4 sm:px-8 py-2 sm:py-2 bg-gray-800 hover:bg-gray-700">Go</button>
+                                    <button class="text-white px-4 sm:px-8 py-2 sm:py-2 bg-gray-800 hover:bg-gray-700" type="submit">Go</button>
                                 </label>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -96,7 +88,7 @@
     </div>
     @endforeach
     @else
-    <div class="font-medium">No Records</div>
+    <div class="font-medium flex justify-center mt-8 text-gray-500 text-base">No Records</div>
     @endif
     
 </x-app-layout>

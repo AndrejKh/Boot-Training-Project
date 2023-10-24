@@ -38,7 +38,7 @@
                                 :class="openTab === 3 ? activeClasses : inactiveClasses"
                                 class="text-body-color py-2 px-4 font-medium md:text-base lg:px-6"
                             >
-                                {{ __('Enquires') }}
+                                {{ __('Enquiries') }}
                             </a>
                         </div>
                         <div>

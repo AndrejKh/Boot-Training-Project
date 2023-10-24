@@ -28,36 +28,28 @@
                             </a>
                         </div>
                         <div>
-                            <div
-                                class="text-body-color p-6 text-base leading-relaxed flex justify-center"
-                            >
+                            <form action="/search" method="GET" class="text-body-color p-6 text-base leading-relaxed flex justify-center" id="myForm">
+                                @csrf
+                                <input type="hidden" name="cat" value="trainer">
                                 <label class="block">
                                     <span class="text-gray-700">Filter by regions covered</span>
-                                    <select name="location" id="location" class="block w-full mt-1">
-                                        <option value="">Select location</option>
-                                        <option value="London-England">London-England</option>
-                                        <option value="East Midlands-England">East Midlands-England</option>
-                                        <option value="West Midlands-England">West Midlands-England</option>
-                                        <option value="North East-England">North East-England</option>
-                                        <option value="North West-England">North West-England</option>
-                                        <option value="South West-England">South West-England</option>
-                                        <option value="South Eest-England">South Eest-England</option>
-                                        <option value="Yorkshire & The Humber-England">Yorkshire & The Humber-England</option>
-                                        <option value="Scotland">Scotland</option>
-                                        <option value="Wales">Wales</option>
-                                        <option value="Northern Ireland">Northern Ireland</option>
+                                    <select name="region" id="region" class="block w-full mt-1" x-on:change="document.getElementById('myForm').submit()">
+                                        <option value="" {{isset($query) && ($query[0] == '') ? 'selected': '' }}>Select region</option>
+                                        @foreach($sharedRegions as $region)
+                                        <option value="{{$region}}" {{isset($query) && ($query[0] == $region) ? 'selected': '' }}>{{$region}}</option>
+                                        @endforeach
                                     </select>
                                 </label>
                                 <label class="block ml-4">
                                     <span class="text-gray-700">Filter by course</span>
-                                    <select name="course" id="course" class="block w-full mt-1">
-                                        <option value="">Select course</option>
+                                    <select name="course" id="course" class="block w-full mt-1" x-on:change="document.getElementById('myForm').submit()">
+                                        <option value="" {{isset($query) && ($query[1] == '') ? 'selected': '' }}>Select course</option>
                                         @foreach($courseslist as $list)
-                                        <option value="{{$list}}">{{$list}}</option>
+                                        <option value="{{$list}}" {{isset($query) && ($query[1] == $list) ? 'selected': '' }}>{{$list}}</option>
                                         @endforeach
                                     </select>
                                 </label>
-                            </div>
+                            </form>
                             
                         </div>
                     </div>
@@ -116,6 +108,7 @@
     </div>
     @endforeach
     @else
+    <div class="font-medium flex justify-center mt-8 text-gray-500 text-base">No Records</div>
     @endif
     
 </x-app-layout>

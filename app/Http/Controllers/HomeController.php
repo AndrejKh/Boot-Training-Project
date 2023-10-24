@@ -11,7 +11,7 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($key=[])
     {
         //
         $courseslist = [];
@@ -22,7 +22,7 @@ class HomeController extends Controller
             }
         }
         
-        $courses = Courses::with('user.trainer')->whereHas('user', function ($query) {
+        $courses = Courses::with('user.trainer')->where('approved', true)->whereHas('user', function ($query) {
             $query->where('type', false);
         })->get();
         
@@ -33,7 +33,7 @@ class HomeController extends Controller
         
         
     }
-    public function indexforTrainers()
+    public function indexforTrainers($key=[])
     {
         //
         $courseslist = [];

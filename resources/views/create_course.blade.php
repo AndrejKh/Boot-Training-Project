@@ -16,7 +16,7 @@
                             <select id="select_course" class="block w-3/5 mt-1 rounded-md border-gray-300 " name="select_course" x-model="selectedOption" autofocus>
                                 <option value="">Other please specify</option>
                                 @foreach ($courses as $course)
-                                <option value="{{$course->name}}">{{$course->name}}</option>
+                                <option value="{{$course}}">{{$course}}</option>
                                 @endforeach
                                 
                             </select>

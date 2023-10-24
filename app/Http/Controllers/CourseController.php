@@ -48,7 +48,14 @@ class CourseController extends Controller
     public function create()
     {   
         $courses = Courses::all();
-        return view('create_course', ['courses' => $courses]);
+        $coursesList = [];
+        foreach($courses as $course) {
+            if(!in_array($course['name'], $coursesList, false)){
+                array_push($coursesList, $course['name']);
+            }
+        }
+
+        return view('create_course', ['courses' => $coursesList]);
     }
 
     /**
@@ -97,7 +104,7 @@ class CourseController extends Controller
         if($isAdmin){
             return redirect('courses');
         }
-        return redirect('backsoon');
+        return view('backsoon');
         
     }
 
@@ -142,7 +149,7 @@ class CourseController extends Controller
 
             return redirect('courses');
         }else {
-            echo "update";
+            abort(404);
         }
     }
 

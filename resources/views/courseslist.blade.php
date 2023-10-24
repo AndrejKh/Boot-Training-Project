@@ -27,10 +27,10 @@
                                 {{ __('Courses List') }}
                             </a>
                             <a  
-                                href="enquires"
+                                href="enquiries"
                                 class="text-body-color py-2 px-4 font-medium md:text-base lg:px-6"
                             >
-                                {{ __('Enquires') }}
+                                {{ __('Enquiries') }}
                             </a>
                         </div>
                         <div>

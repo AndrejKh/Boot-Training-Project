@@ -117,7 +117,7 @@ class TrainerController extends Controller
 
             return redirect('trainers');
         }else {
-            echo "update";
+            abort(404);
         }
     }
 

@@ -83,6 +83,7 @@
                     
                     @endif
                 @else
+                
                     <div class="p-12 pt-4 text-gray-900 ">
                         <div class="flex">
                             <h3 class="font-bold">Enquire about this course</h3>
@@ -91,6 +92,7 @@
                         <form method="POST" action="{{ route('send-enquiry') }}">
                             @csrf
                             <input type="hidden" name="course_id" value="{{$course[0]['id']}}">
+                            <input type="hidden" name="trainer_id" value="{{$course[0]['trainer_id']}}">
                             <input type="hidden" name="provider" value="{{$course[0]['user']['trainer']['provider']}}">
                             <div class="mt-4">
                                 <x-input-label for="title" :value="__('Title')" />

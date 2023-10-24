@@ -29,9 +29,9 @@ class Courses extends Model
         return $this->belongsTo(User::class, 'trainer_id');
     }
 
-    public function enquires()
+    public function enquiries()
     {
-        return $this->hasMany(Enquires::class, 'trainer_id');
+        return $this->hasMany(Enquiries::class, 'trainer_id');
     }
 
 }

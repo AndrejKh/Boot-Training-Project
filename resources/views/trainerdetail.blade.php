@@ -109,7 +109,7 @@
                         </div>
                         <form method="POST" action="{{ route('send-enquiry') }}">
                             @csrf
-                            <input type="hidden" name="trainer_id" value="{{$trainer[0]['id']}}">
+                            <input type="hidden" name="trainer_id" value="{{$trainer[0]['user_id']}}">
                             <input type="hidden" name="provider" value="{{$trainer[0]['provider']}}">
                             <div class="mt-4">
                                 <x-input-label for="title" :value="__('Title')" />

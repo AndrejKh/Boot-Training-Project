@@ -5,6 +5,7 @@ use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home-trainers', [HomeController::class, 'indexforTrainers'])->name('home-trainers');
+
+Route::get('/search', [SearchController::class, 'search']);
+
 Route::get('trainers', [TrainerController::class, 'index'])->name('trainers');
 Route::get('trainers/{id}', [TrainerController::class, 'show'])->name("viewtrainer");
 Route::put('trainers/{id}', [TrainerController::class, 'update'])->middleware(['auth', 'verified'])->name("approvetrainer");
@@ -30,8 +34,8 @@ Route::post('courses/store', [CourseController::class, 'store'])->middleware(['a
 Route::put('courses/{id}', [CourseController::class, 'update'])->middleware(['auth', 'verified'])->name("approvecourse");
 Route::get('courses/{id}', [CourseController::class, 'show'])->name("viewcourse");
 
-Route::get('enquires', [EnquiryController::class, 'index'])->middleware(['auth', 'verified'])->name("enquires");
-Route::post('enquires/store', [EnquiryController::class, 'store'])->name("send-enquiry");
+Route::get('enquiries', [EnquiryController::class, 'index'])->middleware(['auth', 'verified'])->name("enquiries");
+Route::post('enquiries/store', [EnquiryController::class, 'store'])->name("send-enquiry");
 
 
 // Route::get('/dashboard', function () {
