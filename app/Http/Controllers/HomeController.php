@@ -43,7 +43,7 @@ class HomeController extends Controller
                 array_push($courseslist, $course['name']);
             }
         }
-        $trainers = Trainers::with('user.courses')->get();
+        $trainers = Trainers::with('user.courses')->where('approved', true)->get();
         
         return view("home_trainers", [
             'courseslist' => $courseslist,
