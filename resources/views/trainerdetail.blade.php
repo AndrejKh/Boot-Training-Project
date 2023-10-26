@@ -105,7 +105,7 @@
                 @else
                 <div class="p-12 pt-4 text-gray-900 ">
                         <div class="flex">
-                            <h3 class="font-bold">Enquire about this course</h3>
+                            <h3 class="font-bold">Make an enquiry</h3>
                         </div>
                         <form method="POST" action="{{ route('send-enquiry') }}">
                             @csrf

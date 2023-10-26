@@ -1,3 +1,24 @@
+docker-compose build
+docker-compose up -d
+cp .env.example .env
+
+` DB_CONNECTION=mysql
+  DB_HOST=db
+  DB_PORT=3306
+  DB_DATABASE=booktraining
+  DB_USERNAME=root1
+  DB_PASSWORD=password
+`
+
+docker-exec -t -i laravel_php /bin/bash
+composer install
+php artisan key:generate
+php artisan migrate
+npm install
+npm run build
+exit;
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
