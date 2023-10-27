@@ -32,7 +32,6 @@
                                             array_push($formatlist, $sharedFormat[$format]);
                                         } 
                                     }
-                                    
                                 }
                             }
                             
