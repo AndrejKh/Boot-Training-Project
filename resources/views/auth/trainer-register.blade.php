@@ -7,7 +7,7 @@
 
         <div class="mt-4">
             <x-input-label for="title" :value="__('Title')" />
-            <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autocomplete="title" placeholder="ex: Mr, Mrs, Ms, Dr" />
+            <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autocomplete="title" placeholder="" />
             <x-input-error :messages="$errors->get('title')" class="mt-2" />
         </div>
         <!-- Name -->
@@ -16,7 +16,7 @@
             <div class="flex flex-row">
                 <x-text-input id="firstName" class="block mt-1 w-full mr-1" type="text" name="firstName" :value="old('firstName')" required autofocus autocomplete="firstName" placeholder="First Name" />
                 <x-input-error :messages="$errors->get('firstName')" class="mt-2" />
-            
+
                 <x-text-input id="lastName" class="block mt-1 w-full ml-1" type="text" name="lastName" :value="old('lastName')" required autocomplete="lastName" placeholder="Last Name"/>
                 <x-input-error :messages="$errors->get('lastName')" class="mt-2" />
             </div>
@@ -28,7 +28,7 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" placeholder="Email" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        
+
         <div class="mt-4">
             <x-input-label for="verify_email" :value="__('Verify Email')" />
             <x-text-input id="verify_email" class="block mt-1 w-full" type="email" name="verify_email" required autocomplete="verify_email" placeholder="Verify Email" />
@@ -68,7 +68,7 @@
             <x-text-input id="provider" class="block mt-1 w-full" type="text" name="provider" :value="old('provider')" required autocomplete="provider" placeholder="Provider Name"/>
             <x-input-error :messages="$errors->get('provider')" class="mt-2" />
         </div>
-        
+
         <div class="mt-4">
             <x-input-label for="phone" :value="__('Telephone Number')" />
             <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="123 456 7890"/>
