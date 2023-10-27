@@ -75,9 +75,19 @@
                         <p class="font-bold mr-2">Regions Covered: </p>
                         <p>{{$course['region']}}</p>
                     </div>
+                    @php
+                    $formatlist = [];
+                    $formatVal = explode(",", $course['format']);
+                    foreach($formatVal as $format) {
+                        if(!in_array($sharedFormat[$format], $formatlist, false)){
+                            array_push($formatlist, $sharedFormat[$format]);
+                        } 
+                    }
+                    $formats = implode(", ", $formatlist);
+                    @endphp
                     <div class="flex ">
                         <p class="font-bold mr-2">Format: </p>
-                        <p>{{$sharedFormat[$course['format']]}}</p>
+                        <p>{{$formats}}</p>
                     </div>
                     <div class="flex justify-end">
                         <a class="px-2 sm:px-2 py-1 sm:py-1 bg-gray-800 hover:bg-gray-700 text-white" href="{{route('viewcourse', ['id' => $course['id']]) }}">View detail</a>

@@ -71,8 +71,12 @@
                 if(!in_array($course['name'], $courseslist, false)){
                     array_push($courseslist, $course['name']);
                 }
-                if(!in_array($sharedFormat[$course['format']], $formatlist, false)){
-                    array_push($formatlist, $sharedFormat[$course['format']]);
+                
+                $formatVal = explode(",", $course['format']);
+                foreach($formatVal as $format) {
+                    if(!in_array($sharedFormat[$format], $formatlist, false)){
+                        array_push($formatlist, $sharedFormat[$format]);
+                    } 
                 }
             }
             $offerdCourses = implode(", ", $courseslist);
