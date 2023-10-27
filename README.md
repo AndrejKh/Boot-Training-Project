@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2> To run this project</h2>
 
 <p>git clone https://geniusProDEv@bitbucket.org/5woody/book-training.git && cd book-training</p> 
@@ -14,6 +15,18 @@
 <p>exit</p>
 
 <h2> To upgrade this project</h2>
+=======
+<p> docker-compose build </p>
+<p>docker-compose up -d</p>
+<p>cp .env.example .env</p>
+<p>docker exec -t -i laravel_php /bin/bash</p>
+<p>composer install</p>
+<p>php artisan key:generate</p>
+<p>php artisan migrate</p>
+<p>npm install</p>
+<p>npm run build</p>
+<p>exit</p>
+>>>>>>> ac74139825b7a2a880be11829169c397b7e8bb7c
 
 <p>git clone https://geniusProDEv@bitbucket.org/5woody/book-training.git && cd book-training </p> 
 <p>docker-compose down </p> 
