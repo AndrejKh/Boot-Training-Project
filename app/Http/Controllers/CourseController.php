@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Courses;
+use App\Models\CourseTemplates;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -47,15 +48,8 @@ class CourseController extends Controller
      */
     public function create()
     {   
-        $courses = Courses::all();
-        $coursesList = [];
-        foreach($courses as $course) {
-            if(!in_array($course['name'], $coursesList, false)){
-                array_push($coursesList, $course['name']);
-            }
-        }
-
-        return view('create_course', ['courses' => $coursesList]);
+        $courses = CourseTemplates::where('approved', true)->get();
+        return view('create_course', ['courses' => $courses]);
     }
 
     /**
@@ -76,7 +70,7 @@ class CourseController extends Controller
             'certificate' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
         ]);
-        
+
         $trainer_id;
         $isAdmin = false;
         if (Auth::check()) {
@@ -91,6 +85,7 @@ class CourseController extends Controller
             'trainer_id' => $trainer_id,
             'name' => $request->name,
             'duration' => $request->duration,
+            'dur_mode' => $request->dur_mode,
             'price' => $request->price,
             'min_parts' => $request->min_parts,
             'max_parts' => $request->max_parts,

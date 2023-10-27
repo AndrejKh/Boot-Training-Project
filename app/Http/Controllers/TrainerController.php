@@ -45,7 +45,7 @@ class TrainerController extends Controller
             'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class, 'same:verify_email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'regex:/^(\+\d{1,3}(\s|)\(\d{3}\)(\s|)\d{3}(\s|)\d{4}|\+\d{1,3}(\s|)\d{3}(\s|)\d{3}(\s|)\d{4})$/'],
+            'phone' => ['required', 'regex:/^\d{10,12}$/'],
             'photo' => ['image','mimes:jpeg,png,jpg,gif','max:2048'],
             'jobTitle' => ['required', 'string', 'max:255'],
             'provider' => ['required', 'string', 'max:255'],

@@ -5,7 +5,7 @@
                 <div class="p-12 text-gray-900 ">
                     
                     <div class="flex justify-center mt-6">
-                        <img src="{{ asset('storage/'.$course[0]['user']['trainer']['photo']) }}" alt="" class="w-28 h-28">
+                        <img src="{{ isset($course[0]['user']['trainer']['photo']) ? asset('storage/'.$course[0]['user']['trainer']['photo']) : '' }}" alt="" class="w-28 h-28">
                     </div>
                     <div class="flex mt-6">
                         <h3 class="font-bold text-xl">{{$course[0]['level']}} {{$course[0]['name']}}</h3>
@@ -16,11 +16,19 @@
                     </div>
                     <div class="flex mt-3">
                         <p class="font-bold mr-2">Format: </p>
-                        <p>{{$sharedFormat[$course[0]['format']]}}</p>
+                        @php
+                        $formats = "";
+                        $formatsList = explode(",", $course[0]['format']);
+                        foreach($formatsList as $key => $format){
+                            $formatsList[$key] = $sharedFormat[$format];
+                        }
+                        $formats = implode(", ", $formatsList);
+                        @endphp
+                        <p>{{$formats}}</p>
                     </div>
                     <div class="flex mt-3">
                         <p class="font-bold mr-2">Duration: </p>
-                        <p>{{$course[0]['duration']}} Hours</p>
+                        <p>{{$course[0]['duration']}} {{$sharedDurModes[$course[0]['dur_mode']]}}</p>
                     </div>
                     <div class="flex mt-3">
                         <p class="font-bold mr-2">Price: </p>
@@ -44,7 +52,7 @@
                     </div>
                     <div class="flex mt-3">
                         <p class="font-bold mr-2">Provider: </p>
-                        <p>{{$course[0]['user']['trainer']['provider']}}</p>
+                        <p>{{isset($course[0]['user']['trainer']['provider']) ? $course[0]['user']['trainer']['provider'] : '' }}</p>
                     </div>
                     <div class="flex mt-3">
                         <p class="font-bold mr-2">Course Description: </p>
@@ -130,7 +138,7 @@
                             
                             <div class="mt-4">
                                 <x-input-label for="phone" :value="__('Telephone Number')" />
-                                <x-text-input id="phone" class="block mt-1 w-1/2" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="+44 123 456 7890"/>
+                                <x-text-input id="phone" class="block mt-1 w-1/2" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="123 456 7890"/>
                                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                             </div>
 

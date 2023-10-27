@@ -1,23 +1,32 @@
-docker-compose build
-docker-compose up -d
-cp .env.example .env
+<h2> To run this project</h2>
 
-` DB_CONNECTION=mysql
-  DB_HOST=db
-  DB_PORT=3306
-  DB_DATABASE=booktraining
-  DB_USERNAME=root1
-  DB_PASSWORD=password
-`
+<p>git clone https://geniusProDEv@bitbucket.org/5woody/book-training.git && cd book-training</p> 
+<p>docker-compose build </p> 
+<p>docker-compose up -d</p> 
+<p>cp .env.example .env</p> 
+<p>docker exec -t -i laravel_php /bin/bash</p> 
+<p>composer install</p> 
+<p>php artisan key:generate</p> 
+<p>php artisan migrate</p> 
+<p>php artisan db:seed</p> 
+<p>npm install</p> 
+<p>npm run build</p> 
+<p>exit</p>
 
-docker-exec -t -i laravel_php /bin/bash
-composer install
-php artisan key:generate
-php artisan migrate
-npm install
-npm run build
-exit;
+<h2> To upgrade this project</h2>
 
+<p>git clone https://geniusProDEv@bitbucket.org/5woody/book-training.git && cd book-training </p> 
+<p>docker-compose down </p> 
+<p>docker-compose build </p> 
+<p>docker-compose up -d</p> 
+<p>rm .env</p> 
+<p>cp .env.example .env</p> 
+<p>docker exec -t -i laravel_php /bin/bash</p> 
+<p>php artisan migrate</p>
+<p>php artisan db:seed</p> 
+<p>npm install</p> 
+<p>npm run build</p> 
+<p>exit</p>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

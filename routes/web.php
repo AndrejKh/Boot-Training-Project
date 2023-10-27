@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseTemplateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SearchController;
@@ -27,6 +28,11 @@ Route::get('/search', [SearchController::class, 'search']);
 Route::get('trainers', [TrainerController::class, 'index'])->name('trainers');
 Route::get('trainers/{id}', [TrainerController::class, 'show'])->name("viewtrainer");
 Route::put('trainers/{id}', [TrainerController::class, 'update'])->middleware(['auth', 'verified'])->name("approvetrainer");
+
+Route::get('coursetemplates', [CourseTemplateController::class, 'index'])->middleware(['auth', 'verified'])->name('coursetemplates');
+Route::post('coursetemplates/store', [CourseTemplateController::class, 'store'])->middleware(['auth', 'verified'])->name("coursetemplates.store");
+Route::post('coursetemplates/{id}', [CourseTemplateController::class, 'update'])->middleware(['auth', 'verified'])->name('coursetemplates.approve');
+Route::delete('coursetemplates/{id}', [CourseTemplateController::class, 'destroy'])->middleware(['auth', 'verified'])->name('coursetemplates.del');
 
 Route::get('courses', [CourseController::class, 'index'])->middleware(['auth', 'verified'])->name("courses");
 Route::get('courses/create', [CourseController::class, 'create'])->middleware(['auth', 'verified'])->name("createcourse");

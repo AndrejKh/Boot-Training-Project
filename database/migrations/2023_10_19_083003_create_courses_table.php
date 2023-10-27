@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('trainer_id')->references('id')->on('users');
             $table->string('name');
             $table->Integer('duration');
+            $table->enum('dur_mode', ['h', 'd']);
             $table->float('price', 8, 2);
             $table->integer('min_parts');
             $table->integer('max_parts');

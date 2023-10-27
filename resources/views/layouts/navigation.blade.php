@@ -22,8 +22,9 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @if(Auth::user()->type)
                 <a href="{{ route('trainers') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Trainers') }}</a>
-                <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Courses') }}</a>
-                <a href="{{ route('enquiries') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4 ">{{ __('Enquiries') }}</a>
+                <a href="{{ route('coursetemplates') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4">{{ __('Course Names') }}</a>
+                <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4">{{ __('Courses') }}</a>
+                <a href="{{ route('enquiries') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4">{{ __('Enquiries') }}</a>
 
                 @else
                 <a href="{{ route('courses') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('My Courses') }}</a>
@@ -63,7 +64,6 @@
             @else
                 <div class="sm:flex sm:items-center sm:ml-6">
                     <a href="{{ route('register-trainer') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Register as Trainer') }}</a>
-                    <a href="{{ route('register') }}" class="font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ml-4">{{ __('Register as Admin') }}</a>
                     <a href="{{ route('login') }}" class="ml-4 font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Log in') }}</a>
                 </div>
             @endauth

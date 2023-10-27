@@ -13,6 +13,7 @@ class Courses extends Model
         'trainer_id',
         'name',
         'duration',
+        'dur_mode',
         'price',
         'min_parts',
         'max_parts',

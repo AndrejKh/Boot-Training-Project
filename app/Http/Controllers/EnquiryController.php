@@ -48,7 +48,7 @@ class EnquiryController extends Controller
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255','same:verify_email'],
-            'phone' => ['required', 'regex:/^(\+\d{1,3}(\s|)\(\d{3}\)(\s|)\d{3}(\s|)\d{4}|\+\d{1,3}(\s|)\d{3}(\s|)\d{3}(\s|)\d{4})$/'],
+            'phone' => ['required', 'regex:/^\d{10,12}$/'],
             'organName' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string', 'max:512'],
             'title' => ['string', 'max:255'],
