@@ -22,7 +22,7 @@ class TrainerController extends Controller
     public function index()
     {
         $trainers = Trainers::with('user.courses')->get();
-        
+
         return view('trainerslist', ['trainers' => $trainers]);
     }
 
@@ -45,7 +45,7 @@ class TrainerController extends Controller
             'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class, 'same:verify_email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'regex:/^\d{10,12}$/'],
+            'phone' => ['required', 'regex:/^[0-9\s]{1,20}$/'],
             'photo' => ['image','mimes:jpeg,png,jpg,gif','max:2048'],
             'jobTitle' => ['required', 'string', 'max:255'],
             'provider' => ['required', 'string', 'max:255'],
@@ -59,7 +59,7 @@ class TrainerController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        
+
         $path = "";
         if($request->photo) {
             $path = $request->file('photo')->store('photos', 'public');
@@ -79,7 +79,8 @@ class TrainerController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/courses');
+
     }
 
     /**

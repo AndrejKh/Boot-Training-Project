@@ -21,13 +21,13 @@ class EnquiryController extends Controller
             $isAdmin = Auth::user()->type;
         }
         $enquiries;
-        
+
         if($isAdmin){
             $enquiries = Enquiries::with('course', 'trainer')->get();
         }else{
             $enquiries = Enquiries::with('course', 'trainer')->where('trainer_id', $trainer_id)->get();
         }
-        
+
         return view('enquirieslist', ['enquiries' => $enquiries]);
     }
 
@@ -48,12 +48,12 @@ class EnquiryController extends Controller
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255','same:verify_email'],
-            'phone' => ['required', 'regex:/^\d{10,12}$/'],
+            'phone' => ['required', 'regex:/^[0-9\s]{1,20}$/'],
             'organName' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string', 'max:512'],
             'title' => ['string', 'max:255'],
         ]);
-        
+
         if($request->trainer_id){
             Enquiries::create([
                 'trainer_id' => $request->trainer_id,
@@ -65,7 +65,7 @@ class EnquiryController extends Controller
                 'phone' => $request->phone,
                 'message' => $request->message,
             ]);
-            
+
             return view('backsoon', ['provider' => $request->provider]);
 
         }else if($request->course_id){
@@ -81,11 +81,11 @@ class EnquiryController extends Controller
             ]);
 
             return view('backsoon', ['provider' => $request->provider]);
-            
+
         }else{
             abort(404);
         }
-        
+
     }
 
     /**
