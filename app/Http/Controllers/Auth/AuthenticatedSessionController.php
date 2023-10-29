@@ -29,8 +29,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Check the type column of the authenticated user
+        if (Auth::user()->type == 0) {
+            return redirect('/courses');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
 
     /**
      * Destroy an authenticated session.
