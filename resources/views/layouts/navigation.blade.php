@@ -67,7 +67,7 @@
                     <a href="{{ route('login') }}" class="ml-4 font-semibold text-white hover:text-gray-300 dark:text-gray-400 dark:hover:text-white ">{{ __('Log in') }}</a>
                 </div>
             @endauth
-           
+
             @auth
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -114,7 +114,7 @@
             </div>
         </div>
     </div>
-    
-        
+
+
     @endauth
 </nav>

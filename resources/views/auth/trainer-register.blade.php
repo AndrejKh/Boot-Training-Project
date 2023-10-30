@@ -5,11 +5,7 @@
     <form method="POST" action="{{ route('register-trainer') }}" enctype="multipart/form-data">
         @csrf
 
-        <div class="mt-4">
-            <x-input-label for="title" :value="__('Title')" />
-            <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autocomplete="title" placeholder="" />
-            <x-input-error :messages="$errors->get('title')" class="mt-2" />
-        </div>
+
         <!-- Name -->
         <div class="mt-4">
             <x-input-label for="name" :value="__('First & Last Name')" />
@@ -71,7 +67,7 @@
 
         <div class="mt-4">
             <x-input-label for="phone" :value="__('Telephone Number')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="123 456 7890"/>
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="0161 123 1234"/>
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
@@ -87,7 +83,7 @@
 
         <div class="mt-4">
             <x-input-label for="bio" :value="__('Please write a bio of yourself.')" />
-            <textarea id="bio" class="block mt-1 w-full rounded-md resize-y border-gray-300 focus:border-blue-500" name="bio" :value="old('bio')" autocomplete="bio" ></textarea>
+            <textarea id="bio" class="block mt-1 w-full rounded-md resize-y border-gray-300 focus:border-blue-500" name="bio" autocomplete="bio">{{ old('bio') }}</textarea>
             <x-input-error :messages="$errors->get('bio')" class="mt-2" />
         </div>
 
