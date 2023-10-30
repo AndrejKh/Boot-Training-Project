@@ -6,14 +6,14 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="">
-                        <x-application-logo class="block h-9 w-auto fill-current text-white" />
+                        <img src="{{ asset('CC-logo-white.svg') }}" width="200">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden  flex items-center space-x-8 sm:-my-px sm:ml-5 sm:flex text-2xl">
-                    <a href="/" class="text-white hover:text-gray-300 uppercase font-semibold ">
-                        {{ __('Book Training') }}
+                    <a href="/" class="text-white hover:text-gray-300 font-semibold ">
+                        {{ __('Book-a-Trainer') }}
                     </a>
                 </div>
             </div>
