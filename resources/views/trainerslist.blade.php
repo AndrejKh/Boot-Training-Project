@@ -1,10 +1,10 @@
 <x-app-layout>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    
+
                     <div
                         class="mb-5 w-full"
                     >
@@ -44,13 +44,13 @@
                                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                 <tr>
                                                     <th scope="col" class="px-6 py-3">
-                                                        Trianer Name
+                                                        Trainer Name
                                                     </th>
                                                     <th scope="col" class="px-6 py-3">
                                                         Trainer Email
                                                     </th>
                                                     <th scope="col" class="px-6 py-3">
-                                                        Job Title
+                                                        Position
                                                     </th>
                                                     <th scope="col" class="px-6 py-3">
                                                         All Courses
@@ -69,7 +69,7 @@
                                             </thead>
                                             <tbody>
                                                 @if($trainers && count($trainers) > 0 )
-                                                    @php    
+                                                    @php
                                                         $i = 0;
                                                     @endphp
                                                     @foreach($trainers as $trainer)
@@ -160,7 +160,7 @@
                                                     </tr>
                                                     <tr class="h-3"></tr>
                                                     @endif
-                                                    @php    
+                                                    @php
                                                         $i ++;
                                                     @endphp
                                                     @endforeach
@@ -173,7 +173,7 @@
                                         </div>
                                     </div>
                                 </div>
-        
+
                             </div>
                         </div>
                     </div>
@@ -182,6 +182,6 @@
             </div>
         </div>
 
-        
+
     </div>
 </x-app-layout>
