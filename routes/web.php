@@ -27,7 +27,10 @@ Route::get('/search', [SearchController::class, 'search']);
 
 Route::get('trainers', [TrainerController::class, 'index'])->name('trainers');
 Route::get('trainers/{id}', [TrainerController::class, 'show'])->name("viewtrainer");
-Route::put('trainers/{id}', [TrainerController::class, 'update'])->middleware(['auth', 'verified'])->name("approvetrainer");
+Route::put('trainers/{id}/approve', [TrainerController::class, 'approve'])->middleware(['auth', 'verified'])->name("approvetrainer");
+Route::get('trainers/{id}/edit', [TrainerController::class, 'edit'])->middleware(['auth', 'verified'])->name("edittrainer");
+Route::delete('trainers/{id}', [TrainerController::class, 'destroy'])->middleware(['auth', 'verified'])->name("deltrainer");
+Route::put('trainers/{id}', [TrainerController::class, 'update'])->middleware(['auth', 'verified'])->name("updatetrainer");
 
 Route::get('coursetemplates', [CourseTemplateController::class, 'index'])->middleware(['auth', 'verified'])->name('coursetemplates');
 Route::post('coursetemplates/store', [CourseTemplateController::class, 'store'])->middleware(['auth', 'verified'])->name("coursetemplates.store");

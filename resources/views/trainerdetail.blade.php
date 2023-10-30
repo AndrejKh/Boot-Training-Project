@@ -78,7 +78,7 @@
                 @if (Auth::check())
                     @if(Auth::user()->type)
                     <div class="p-12 pt-4 text-gray-900 ">
-                        <form method="POST" action="{{ route('approvetrainer', $trainer[0]['id']) }}">
+                        <form method="POST" action="{{ route('approvetrainer', ['id' => $trainer[0]['id']]) }}">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="mode" value="approve"/>

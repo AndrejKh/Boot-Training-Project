@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('trainer_id')->references('id')->on('users');
+            $table->foreignId('trainer_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->Integer('duration');
             $table->enum('dur_mode', ['h', 'd']);

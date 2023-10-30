@@ -49,9 +49,7 @@
                                                     <th scope="col" class="px-6 py-3">
                                                         Trainer Email
                                                     </th>
-                                                    <th scope="col" class="px-6 py-3">
-                                                        Job Title
-                                                    </th>
+                                                    
                                                     <th scope="col" class="px-6 py-3">
                                                         All Courses
                                                     </th>
@@ -85,11 +83,7 @@
                                                                 <p class="text-base font-medium leading-none text-gray-700 mr-2">{{$trainer['user']['email']}} </p>
                                                             </div>
                                                         </td>
-                                                        <td class="pl-5">
-                                                            <div class="flex items-center pl-5">
-                                                                <p class="text-base font-medium leading-none text-gray-700 mr-2">{{$trainer['jobTitle']}} </p>
-                                                            </div>
-                                                        </td>
+                                                        
                                                         <td class="pl-5">
                                                             <div class="flex items-center pl-5">
                                                                 <p class="text-base font-medium leading-none text-gray-700 mr-2">{{count($trainer['user']['courses'])}} Courses </p>
@@ -111,9 +105,18 @@
                                                                 </p>
                                                             </div>
                                                         </td>
+                                                        
                                                         <td class="pl-4">
-                                                            <a href="trainers/{{$trainer['id']}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</a>
-                                                        </td>
+                                                            <div class="flex items-center gap-1.5">
+                                                                <a href="trainers/{{$trainer['id']}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">{{__('View')}}</a>
+                                                                <a href="trainers/{{$trainer['id']}}/edit" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-white py-3 px-5 bg-sky-400 rounded hover:bg-sky-500 focus:outline-none">{{__('Edit')}}</a>
+                                                                <form method="POST" action="{{route('deltrainer', ['id' => $trainer->id])}}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="py-3 px-3 text-sm leading-none text-red-700 bg-red-100 rounded focus:outline-none">{{__('Delete')}}</button>
+                                                                </form>
+                                                            </div>
+                                                        </td>                                                   
                                                     </tr>
                                                     <tr class="h-3"></tr>
                                                     @else
@@ -128,11 +131,7 @@
                                                                 <p class="text-base font-medium leading-none text-gray-700 mr-2">{{$trainer['user']['email']}} </p>
                                                             </div>
                                                         </td>
-                                                        <td class="pl-5">
-                                                            <div class="flex items-center pl-5">
-                                                                <p class="text-base font-medium leading-none text-gray-700 mr-2">{{$trainer['jobTitle']}} </p>
-                                                            </div>
-                                                        </td>
+                                                        
                                                         <td class="pl-5">
                                                             <div class="flex items-center pl-5">
                                                                 <p class="text-base font-medium leading-none text-gray-700 mr-2">{{count($trainer['user']['courses'])}} Courses </p>
@@ -155,7 +154,15 @@
                                                             </div>
                                                         </td>
                                                         <td class="pl-4">
-                                                            <a href="trainers/{{$trainer['id']}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</a>
+                                                            <div class="flex items-center gap-1.5">
+                                                                <a href="trainers/{{$trainer['id']}}" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">{{__('View')}}</a>
+                                                                <a href="trainers/{{$trainer['id']}}/edit" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-white py-3 px-5 bg-sky-400 rounded hover:bg-sky-500 focus:outline-none">{{__('Edit')}}</a>
+                                                                <form method="POST" action="{{route('deltrainer', ['id' => $trainer->id])}}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="py-3 px-3 text-sm leading-none text-red-700 bg-red-100 rounded focus:outline-none">{{__('Delete')}}</button>
+                                                                </form>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr class="h-3"></tr>
