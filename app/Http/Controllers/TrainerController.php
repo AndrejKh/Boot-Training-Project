@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Mail;
 
 class TrainerController extends Controller
 {
@@ -25,7 +26,6 @@ class TrainerController extends Controller
     public function index()
     {
         $trainers = Trainers::with('user.courses')->get();
-
         return view('trainerslist', ['trainers' => $trainers]);
     }
 
@@ -81,8 +81,26 @@ class TrainerController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        
+        $reveiverEmailAddress = User::where('type', true)->get('email');
+        $to = [];
+        foreach($reveiverEmailAddress as $reviver) {
+            array_push($to, $reviver['email']);
+        }
+        
+        $response = Mail::send('emails.register_to_admin', function($message){
+            $message->to($to)->subject('Notifications');
+        });
 
-        return redirect('/courses');
+        $response = Mail::send('emails.register', function($message){
+            $message->to($request->email)->subject('Notifications');
+        });
+       
+        if ($response) {
+            return redirect('/courses');
+        }else{
+            return "Oops! There was some error sending the email.";
+        }
 
     }
 

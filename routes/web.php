@@ -32,6 +32,8 @@ Route::get('trainers/{id}/edit', [TrainerController::class, 'edit'])->middleware
 Route::delete('trainers/{id}', [TrainerController::class, 'destroy'])->middleware(['auth', 'verified'])->name("deltrainer");
 Route::put('trainers/{id}', [TrainerController::class, 'update'])->middleware(['auth', 'verified'])->name("updatetrainer");
 
+Route::get('send-email', [App\Http\Controllers\EmailController::class, 'sendEmail']);
+
 Route::get('coursetemplates', [CourseTemplateController::class, 'index'])->middleware(['auth', 'verified'])->name('coursetemplates');
 Route::post('coursetemplates/store', [CourseTemplateController::class, 'store'])->middleware(['auth', 'verified'])->name("coursetemplates.store");
 Route::post('coursetemplates/{id}', [CourseTemplateController::class, 'update'])->middleware(['auth', 'verified'])->name('coursetemplates.approve');

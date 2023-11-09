@@ -99,6 +99,8 @@ class CourseController extends Controller
         if($isAdmin){
             return redirect('courses');
         }
+
+        
         return view('backsoon');
         
     }

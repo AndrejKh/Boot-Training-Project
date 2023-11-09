@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Enquiries;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class EnquiryController extends Controller
 {
@@ -65,7 +66,15 @@ class EnquiryController extends Controller
                 'phone' => $request->phone,
                 'message' => $request->message,
             ]);
-
+            
+            $data = [
+                'title' => 'Thank you for registering with book-a-trainer',
+                'content' => 'Thank you for registering with book-a-trainer, now be sure to add the courses that you offer.',
+            ];
+    
+            $response = Mail::send('emails.enquiry_to_admin', $data, function($message){
+                $message->to("geniuspromarcus@gmail.com")->subject('Notifications');
+            });
             return view('backsoon', ['provider' => $request->provider]);
 
         }else if($request->course_id){
