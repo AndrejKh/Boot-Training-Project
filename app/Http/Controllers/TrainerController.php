@@ -82,19 +82,19 @@ class TrainerController extends Controller
 
         Auth::login($user);
         
-        $reveiverEmailAddress = User::where('type', true)->get('email');
-        $to = [];
-        foreach($reveiverEmailAddress as $reviver) {
-            array_push($to, $reviver['email']);
-        }
+        // $reveiverEmailAddress = User::where('type', true)->get('email');
+        // $to = [];
+        // foreach($reveiverEmailAddress as $reviver) {
+        //     array_push($to, $reviver['email']);
+        // }
         
-        $response = Mail::send('emails.register_to_admin', function($message){
-            $message->to($to)->subject('Notifications');
-        });
+        // $response = Mail::send('emails.register_to_admin', function($message){
+        //     $message->to($to)->subject('Notifications');
+        // });
 
-        $response = Mail::send('emails.register', function($message){
-            $message->to($request->email)->subject('Notifications');
-        });
+        // $response = Mail::send('emails.register', function($message){
+        //     $message->to($request->email)->subject('Notifications');
+        // });
        
         if ($response) {
             return redirect('/courses');
